@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="list row">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search by name"
+                    [(ngModel)]="title"
+                  />
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    (click)="searchTitle()"
+                  >
+                    Search
+                  </button>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+         
+          <div class="input-group-append"></div>
+        </div>
+      </div>
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+      >
+        <h2 class="h2">Books List</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Description</th>
+              <th class="text-center" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of Books; let i = index">
+              <th scope="row">{{ book._id }}</th>
+              <td>{{ book.name }}</td>
+              <td>{{ book.price }}</td>
+              <td>{{ book.description }}</td>
+              <td class="text-center">
+                <button
+                  class="btn btn-sm btn-primary"
+                  routerLink="/edit-book/{{ book._id }}"
+                >
+                  Edit
+                </button>
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="delete(book._id, i)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
